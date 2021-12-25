@@ -1,0 +1,1 @@
+ln -sf /usr/lib64/calf/libcalf.so %{buildroot}/usr/lib64/calf/calf.so
