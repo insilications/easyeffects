@@ -251,6 +251,9 @@ libXxf86vm-lib
 lilv
 lilv-dev
 lilv-staticdev
+lsp-plugins
+lsp-plugins-dev
+lsp-plugins-staticdev
 lua-dev
 lua-staticdev
 lv2
