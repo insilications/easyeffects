@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : easyeffects
 Version  : 6.1.5
-Release  : 223
+Release  : 225
 URL      : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.1.5.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.1.5.tar.gz
 Summary  : No detailed summary available
@@ -55,6 +55,9 @@ BuildRequires : bzip2-staticdev
 BuildRequires : cairo
 BuildRequires : cairo-dev
 BuildRequires : cairomm-dev
+BuildRequires : calf
+BuildRequires : calf-dev
+BuildRequires : calf-staticdev
 BuildRequires : clr-avx-tools
 BuildRequires : clr-rpm-config
 BuildRequires : cmake
@@ -506,7 +509,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1640504314
+export SOURCE_DATE_EPOCH=1640504782
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

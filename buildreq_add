@@ -34,6 +34,9 @@ bzip2-staticdev
 cairo
 cairo-dev
 cairomm-dev
+calf
+calf-dev
+calf-staticdev
 clr-avx-tools
 clr-rpm-config
 cmake
