@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : easyeffects
 Version  : 6.1.5
-Release  : 222
+Release  : 223
 URL      : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.1.5.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.1.5.tar.gz
 Summary  : No detailed summary available
@@ -33,6 +33,7 @@ BuildRequires : appstream-glib
 BuildRequires : appstream-glib-dev
 BuildRequires : atk
 BuildRequires : atk-dev
+BuildRequires : atkmm-dev
 BuildRequires : autogen
 BuildRequires : autogen-dev
 BuildRequires : automake
@@ -48,10 +49,12 @@ BuildRequires : buildreq-configure
 BuildRequires : buildreq-distutils3
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
+BuildRequires : buildreq-qmake
 BuildRequires : bzip2-dev
 BuildRequires : bzip2-staticdev
 BuildRequires : cairo
 BuildRequires : cairo-dev
+BuildRequires : cairomm-dev
 BuildRequires : clr-avx-tools
 BuildRequires : clr-rpm-config
 BuildRequires : cmake
@@ -90,6 +93,8 @@ BuildRequires : fluidsynth-staticdev
 BuildRequires : fmt
 BuildRequires : fmt-dev
 BuildRequires : fmt-staticdev
+BuildRequires : fomp
+BuildRequires : fomp-dev
 BuildRequires : fontconfig
 BuildRequires : fontconfig-dev
 BuildRequires : fonts-clear
@@ -114,6 +119,7 @@ BuildRequires : git
 BuildRequires : glib
 BuildRequires : glib-bin
 BuildRequires : glib-dev
+BuildRequires : glib-networking
 BuildRequires : glibc-bin
 BuildRequires : glibc-dev
 BuildRequires : glibc-dev32
@@ -127,9 +133,12 @@ BuildRequires : glibc-staticdev
 BuildRequires : glibc-utils
 BuildRequires : glslang
 BuildRequires : gmp-dev
+BuildRequires : gnutls
+BuildRequires : gnutls-dev
 BuildRequires : gobject-introspection
 BuildRequires : gobject-introspection-dev
 BuildRequires : googletest-dev
+BuildRequires : gperf
 BuildRequires : graphite
 BuildRequires : graphite-dev
 BuildRequires : graphviz
@@ -139,12 +148,17 @@ BuildRequires : gtk3
 BuildRequires : gtk3-dev
 BuildRequires : gtk4
 BuildRequires : gtk4-dev
+BuildRequires : gtkmm4
+BuildRequires : gtkmm4-dev
+BuildRequires : gtkmm4-staticdev
 BuildRequires : guile
 BuildRequires : harfbuzz-dev
 BuildRequires : icu4c-dev
 BuildRequires : icu4c-lib
 BuildRequires : json
 BuildRequires : json-dev
+BuildRequires : keyutils
+BuildRequires : keyutils-dev
 BuildRequires : krb5
 BuildRequires : krb5-dev
 BuildRequires : ladspa_sdk
@@ -247,9 +261,11 @@ BuildRequires : libwebp-dev
 BuildRequires : libwebp-staticdev
 BuildRequires : libxcb-dev
 BuildRequires : libxcb-lib
+BuildRequires : libxml2
 BuildRequires : libxml2-dev
 BuildRequires : libxml2-staticdev
 BuildRequires : libxslt
+BuildRequires : libxslt-bin
 BuildRequires : lilv
 BuildRequires : lilv-dev
 BuildRequires : lilv-staticdev
@@ -259,6 +275,8 @@ BuildRequires : lv2
 BuildRequires : lv2-dev
 BuildRequires : lxml
 BuildRequires : m4
+BuildRequires : mda-lv2
+BuildRequires : mda-lv2-dev
 BuildRequires : mesa
 BuildRequires : mesa-dev
 BuildRequires : meson
@@ -276,6 +294,7 @@ BuildRequires : opus-dev
 BuildRequires : opus-lib
 BuildRequires : opus-staticdev
 BuildRequires : pango-dev
+BuildRequires : pangomm-dev
 BuildRequires : pcre-dev
 BuildRequires : pcre-staticdev
 BuildRequires : pcre2-dev
@@ -291,12 +310,26 @@ BuildRequires : pixman-staticdev
 BuildRequires : pkg-config
 BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(fftw3f)
+BuildRequires : pkgconfig(gdk-pixbuf-2.0)
 BuildRequires : pkgconfig(gl)
 BuildRequires : pkgconfig(glib-2.0)
+BuildRequires : pkgconfig(gstreamer-player-1.0)
+BuildRequires : pkgconfig(gtk+-3.0)
+BuildRequires : pkgconfig(gtk4)
+BuildRequires : pkgconfig(gtk4-unix-print)
+BuildRequires : pkgconfig(gtk4-x11)
+BuildRequires : pkgconfig(gtkmm-4.0)
+BuildRequires : pkgconfig(iso-codes)
+BuildRequires : pkgconfig(json-glib-1.0)
+BuildRequires : pkgconfig(libarchive)
+BuildRequires : pkgconfig(libgcab-1.0)
+BuildRequires : pkgconfig(librsvg-2.0)
+BuildRequires : pkgconfig(libsoup-2.4)
 BuildRequires : pkgconfig(lv2)
 BuildRequires : pkgconfig(rubberband)
 BuildRequires : pkgconfig(samplerate)
 BuildRequires : pkgconfig(sndfile)
+BuildRequires : pkgconfig(uuid)
 BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(x11-xcb)
 BuildRequires : procps-ng
@@ -317,6 +350,8 @@ BuildRequires : requests
 BuildRequires : rnnoise
 BuildRequires : rnnoise-dev
 BuildRequires : rnnoise-staticdev
+BuildRequires : rpm
+BuildRequires : rpm-dev
 BuildRequires : rtkit
 BuildRequires : rtkit-bin
 BuildRequires : rtkit-data
@@ -471,7 +506,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1640472969
+export SOURCE_DATE_EPOCH=1640504314
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

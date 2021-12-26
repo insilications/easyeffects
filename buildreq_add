@@ -72,6 +72,8 @@ fluidsynth-staticdev
 fmt
 fmt-dev
 fmt-staticdev
+fomp
+fomp-dev
 fontconfig
 fontconfig-dev
 fonts-clear
@@ -252,6 +254,8 @@ lv2
 lv2-dev
 lxml
 m4
+mda-lv2
+mda-lv2-dev
 mesa
 mesa-dev
 meson
