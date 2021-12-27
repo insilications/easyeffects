@@ -321,6 +321,8 @@ rtkit-bin
 rtkit-data
 rtkit-libexec
 rtkit-services
+rubberband-dev
+rubberband-staticdev
 sassc
 SDL2
 SDL2-dev
