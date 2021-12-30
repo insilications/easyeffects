@@ -2,8 +2,7 @@ ld-linux-x86-64.so.2
 libadwaita-1.so.0
 libc.so.6
 libcairo.so.2
-libebur128.so.1
-libfftw3f.so.3
+libfftw3.so.3
 libgio-2.0.so.0
 libglib-2.0.so.0
 libgobject-2.0.so.0
@@ -12,5 +11,3 @@ libm.so.6
 libmvec.so.1
 libpango-1.0.so.0
 libpipewire-0.3.so.0
-libtbb.so.12
-libzita-convolver.so.4
