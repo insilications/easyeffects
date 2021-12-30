@@ -5,12 +5,15 @@
 %define keepstatic 1
 Name     : easyeffects
 Version  : 6.1.5
-Release  : 249
+Release  : 250
 URL      : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.1.5.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.1.5.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
+Requires: easyeffects-bin = %{version}-%{release}
+Requires: easyeffects-data = %{version}-%{release}
+Requires: easyeffects-locales = %{version}-%{release}
 BuildRequires : PyYAML
 BuildRequires : Pygments
 BuildRequires : SDL2
@@ -467,6 +470,39 @@ Patch1: 0001-Fix-libadwaita-req.patch
 [![CircleCI](https://circleci.com/gh/wwmm/easyeffects.svg?style=shield)](https://circleci.com/gh/wwmm/easyeffects)
 [![Donate](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/wwmm/donate)
 
+%package bin
+Summary: bin components for the easyeffects package.
+Group: Binaries
+Requires: easyeffects-data = %{version}-%{release}
+
+%description bin
+bin components for the easyeffects package.
+
+
+%package data
+Summary: data components for the easyeffects package.
+Group: Data
+
+%description data
+data components for the easyeffects package.
+
+
+%package doc
+Summary: doc components for the easyeffects package.
+Group: Documentation
+
+%description doc
+doc components for the easyeffects package.
+
+
+%package locales
+Summary: locales components for the easyeffects package.
+Group: Default
+
+%description locales
+locales components for the easyeffects package.
+
+
 %prep
 %setup -q -n easyeffects
 cd %{_builddir}/easyeffects
@@ -478,7 +514,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1640838428
+export SOURCE_DATE_EPOCH=1640838590
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -607,6 +643,89 @@ ninja --verbose %{?_smp_mflags} -C builddir
 
 %install
 DESTDIR=%{buildroot} ninja -C builddir install
+%find_lang easyeffects
 
 %files
+%defattr(-,root,root,-)
+
+%files bin
+%defattr(-,root,root,-)
+/usr/bin/easyeffects
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/applications/com.github.wwmm.easyeffects.desktop
+/usr/share/dbus-1/services/com.github.wwmm.easyeffects.service
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.autogain.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.bassenhancer.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.bassloudness.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.compressor.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.convolver.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.crossfeed.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.crystalizer.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.deesser.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.delay.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.echo_canceller.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.equalizer.channel.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.equalizer.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.exciter.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.filter.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.gate.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.limiter.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.loudness.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.maximizer.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.multibandcompressor.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.multibandgate.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.outputlevel.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.pitch.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.reverb.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.rnnoise.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.spectrum.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.stereotools.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.streaminputs.gschema.xml
+/usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.streamoutputs.gschema.xml
+/usr/share/icons/hicolor/scalable/apps/easyeffects.svg
+/usr/share/metainfo/com.github.wwmm.easyeffects.metainfo.xml
+
+%files doc
+%defattr(0644,root,root,0755)
+/usr/share/help/C/easyeffects/advancedinfo.page
+/usr/share/help/C/easyeffects/autogain.page
+/usr/share/help/C/easyeffects/bassenhancer.page
+/usr/share/help/C/easyeffects/bassloudness.page
+/usr/share/help/C/easyeffects/blocklist.page
+/usr/share/help/C/easyeffects/compressor.page
+/usr/share/help/C/easyeffects/convolver.page
+/usr/share/help/C/easyeffects/crossfeed.page
+/usr/share/help/C/easyeffects/crystalizer.page
+/usr/share/help/C/easyeffects/deesser.page
+/usr/share/help/C/easyeffects/delay.page
+/usr/share/help/C/easyeffects/echocanceller.page
+/usr/share/help/C/easyeffects/effectsorder.page
+/usr/share/help/C/easyeffects/enableapp.page
+/usr/share/help/C/easyeffects/equalizer.page
+/usr/share/help/C/easyeffects/exciter.page
+/usr/share/help/C/easyeffects/filter.page
+/usr/share/help/C/easyeffects/gate.page
+/usr/share/help/C/easyeffects/general.page
+/usr/share/help/C/easyeffects/guide_1.page
+/usr/share/help/C/easyeffects/index.page
+/usr/share/help/C/easyeffects/limiter.page
+/usr/share/help/C/easyeffects/loudness.page
+/usr/share/help/C/easyeffects/maximizer.page
+/usr/share/help/C/easyeffects/multibandcompressor.page
+/usr/share/help/C/easyeffects/multibandgate.page
+/usr/share/help/C/easyeffects/pipewire.page
+/usr/share/help/C/easyeffects/pitch.page
+/usr/share/help/C/easyeffects/reverb.page
+/usr/share/help/C/easyeffects/rnnoise.page
+/usr/share/help/C/easyeffects/saturated.page
+/usr/share/help/C/easyeffects/settingsmenu.page
+/usr/share/help/C/easyeffects/spectrum.page
+/usr/share/help/C/easyeffects/stereotools.page
+/usr/share/help/C/easyeffects/testsignals.page
+/usr/share/help/C/easyeffects/userpresets.page
+
+%files locales -f easyeffects.lang
 %defattr(-,root,root,-)
