@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : easyeffects
 Version  : 6.1.5
-Release  : 239
+Release  : 241
 URL      : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.1.5.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.1.5.tar.gz
 Summary  : No detailed summary available
@@ -514,7 +514,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1640830368
+export SOURCE_DATE_EPOCH=1640831607
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
