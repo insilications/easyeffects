@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : easyeffects
-Version  : 6.1.5
-Release  : 254
-URL      : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.1.5.tar.gz
-Source0  : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.1.5.tar.gz
+Version  : 6.2.1
+Release  : 256
+URL      : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.2.1.tar.gz
+Source0  : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.2.1.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -463,7 +463,6 @@ BuildRequires : zstd-staticdev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
-Patch1: 0001-Fix-libadwaita-req.patch
 
 %description
 # EasyEffects
@@ -506,7 +505,6 @@ locales components for the easyeffects package.
 %prep
 %setup -q -n easyeffects
 cd %{_builddir}/easyeffects
-%patch1 -p1
 
 %build
 unset http_proxy
@@ -514,7 +512,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1640853743
+export SOURCE_DATE_EPOCH=1641453633
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -570,11 +568,11 @@ export CCACHE_BASEDIR=/builddir/build/BUILD
 #
 export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/share/pkgconfig"
 #
-export LD_LIBRARY_PATH="/usr/nvidia/lib64:/usr/nvidia/lib64/gbm:/usr/nvidia/lib64/vdpau:/usr/nvidia/lib64/xorg/modules/drivers:/usr/nvidia/lib64/xorg/modules/extensions:/usr/local/cuda/lib64:/usr/lib64/haswell:/usr/lib64/dri:/usr/lib64:/usr/lib:/aot/intel/oneapi/compiler/latest/linux/compiler/lib/intel64_lin:/aot/intel/oneapi/compiler/latest/linux/lib:/aot/intel/oneapi/mkl/latest/lib/intel64:/aot/intel/oneapi/tbb/latest/lib/intel64/gcc4.8:/usr/share:/usr/lib64/wine:/usr/nvidia/lib32:/usr/nvidia/lib32/vdpau:/usr/lib32:/usr/lib32/wine"
+export LD_LIBRARY_PATH="/usr/local/nvidia/lib64:/usr/local/nvidia/lib64/gbm:/usr/local/nvidia/lib64/vdpau:/usr/local/nvidia/lib64/xorg/modules/drivers:/usr/local/nvidia/lib64/xorg/modules/extensions:/usr/local/cuda/lib64:/usr/lib64/haswell:/usr/lib64/dri:/usr/lib64:/usr/lib:/aot/intel/oneapi/compiler/latest/linux/compiler/lib/intel64_lin:/aot/intel/oneapi/compiler/latest/linux/lib:/aot/intel/oneapi/mkl/latest/lib/intel64:/aot/intel/oneapi/tbb/latest/lib/intel64/gcc4.8:/usr/share:/usr/lib64/wine:/usr/local/nvidia/lib32:/usr/local/nvidia/lib32/vdpau:/usr/lib32:/usr/lib32/wine"
 #
-export LIBRARY_PATH="/usr/nvidia/lib64:/usr/nvidia/lib64/gbm:/usr/nvidia/lib64/vdpau:/usr/nvidia/lib64/xorg/modules/drivers:/usr/nvidia/lib64/xorg/modules/extensions:/usr/local/cuda/lib64:/usr/lib64/haswell:/usr/lib64/dri:/usr/lib64:/usr/lib:/aot/intel/oneapi/compiler/latest/linux/compiler/lib/intel64_lin:/aot/intel/oneapi/compiler/latest/linux/lib:/aot/intel/oneapi/mkl/latest/lib/intel64:/aot/intel/oneapi/tbb/latest/lib/intel64/gcc4.8:/usr/share:/usr/lib64/wine:/usr/nvidia/lib32:/usr/nvidia/lib32/vdpau:/usr/lib32:/usr/lib32/wine"
+export LIBRARY_PATH="/usr/local/nvidia/lib64:/usr/local/nvidia/lib64/gbm:/usr/local/nvidia/lib64/vdpau:/usr/local/nvidia/lib64/xorg/modules/drivers:/usr/local/nvidia/lib64/xorg/modules/extensions:/usr/local/cuda/lib64:/usr/lib64/haswell:/usr/lib64/dri:/usr/lib64:/usr/lib:/aot/intel/oneapi/compiler/latest/linux/compiler/lib/intel64_lin:/aot/intel/oneapi/compiler/latest/linux/lib:/aot/intel/oneapi/mkl/latest/lib/intel64:/aot/intel/oneapi/tbb/latest/lib/intel64/gcc4.8:/usr/share:/usr/lib64/wine:/usr/local/nvidia/lib32:/usr/local/nvidia/lib32/vdpau:/usr/lib32:/usr/lib32/wine"
 #
-export PATH="/usr/lib64/ccache/bin:/usr/local/cuda/bin:/usr/nvidia/bin:/usr/bin/haswell:/usr/bin:/usr/sbin"
+export PATH="/usr/lib64/ccache/bin:/usr/local/cuda/bin:/usr/local/nvidia/bin:/usr/bin/haswell:/usr/bin:/usr/sbin"
 #
 export CPATH="/usr/local/cuda/include"
 #
@@ -608,15 +606,16 @@ export PLASMA_USE_QT_SCALING=1
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export GSETTINGS_SCHEMA_DIR="/usr/share/glib-2.0/schemas"
 ## altflags_pgo end
-echo PGO Phase 2
-export CFLAGS="${CFLAGS_USE}"
-export CXXFLAGS="${CXXFLAGS_USE}"
-export FFLAGS="${FFLAGS_USE}"
-export FCFLAGS="${FCFLAGS_USE}"
-export LDFLAGS="${LDFLAGS_USE}"
-export ASMFLAGS="${ASMFLAGS_USE}"
-export LIBS="${LIBS_USE}"
-CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" LIBS="$LIBS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Ddefault_library=both -Ddefault_library=both  builddir
+export CFLAGS="${CFLAGS_GENERATE}"
+export CXXFLAGS="${CXXFLAGS_GENERATE}"
+export FFLAGS="${FFLAGS_GENERATE}"
+export FCFLAGS="${FCFLAGS_GENERATE}"
+export LDFLAGS="${LDFLAGS_GENERATE}"
+export ASMFLAGS="${ASMFLAGS_GENERATE}"
+export LIBS="${LIBS_GENERATE}"
+
+echo PGO Phase 1
+CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" LIBS="$LIBS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Ddefault_library=both  -Ddefault_library=both builddir
 ## make_prepend content
 sd '(LINK_ARGS.+)(\s/usr/lib64/libfftw3f\.so)' -- '$1 -Wl,--whole-archive,--as-needed,--allow-multiple-definition,/usr/lib64/libfftw3f.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive' $(fd -uu --glob *.ninja)
 sd '(LINK_ARGS.+)(\s/usr/lib64/libfftw3\.so)' -- '$1 -Wl,--whole-archive,--as-needed,--allow-multiple-definition,/usr/lib64/libfftw3.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive' $(fd -uu --glob *.ninja)
@@ -644,6 +643,9 @@ ninja --verbose %{?_smp_mflags} -C builddir
 %install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang easyeffects
+## install_append content
+glib-compile-schemas %{buildroot}/usr/share/glib-2.0/schemas/
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -685,6 +687,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.stereotools.gschema.xml
 /usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.streaminputs.gschema.xml
 /usr/share/glib-2.0/schemas/com.github.wwmm.easyeffects.streamoutputs.gschema.xml
+/usr/share/glib-2.0/schemas/gschemas.compiled
 /usr/share/icons/hicolor/scalable/apps/easyeffects.svg
 /usr/share/metainfo/com.github.wwmm.easyeffects.metainfo.xml
 
