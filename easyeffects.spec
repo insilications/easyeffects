@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : easyeffects
 Version  : 6.2.1
-Release  : 256
+Release  : 257
 URL      : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.2.1.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/easyeffects/easyeffects-v6.2.1.tar.gz
 Summary  : No detailed summary available
@@ -512,7 +512,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641453633
+export SOURCE_DATE_EPOCH=1641468187
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -606,16 +606,16 @@ export PLASMA_USE_QT_SCALING=1
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export GSETTINGS_SCHEMA_DIR="/usr/share/glib-2.0/schemas"
 ## altflags_pgo end
-export CFLAGS="${CFLAGS_GENERATE}"
-export CXXFLAGS="${CXXFLAGS_GENERATE}"
-export FFLAGS="${FFLAGS_GENERATE}"
-export FCFLAGS="${FCFLAGS_GENERATE}"
-export LDFLAGS="${LDFLAGS_GENERATE}"
-export ASMFLAGS="${ASMFLAGS_GENERATE}"
-export LIBS="${LIBS_GENERATE}"
 
-echo PGO Phase 1
-CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" LIBS="$LIBS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Ddefault_library=both  -Ddefault_library=both builddir
+echo PGO Phase 2
+export CFLAGS="${CFLAGS_USE}"
+export CXXFLAGS="${CXXFLAGS_USE}"
+export FFLAGS="${FFLAGS_USE}"
+export FCFLAGS="${FCFLAGS_USE}"
+export LDFLAGS="${LDFLAGS_USE}"
+export ASMFLAGS="${ASMFLAGS_USE}"
+export LIBS="${LIBS_USE}"
+CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" LIBS="$LIBS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Ddefault_library=both -Ddefault_library=both  builddir
 ## make_prepend content
 sd '(LINK_ARGS.+)(\s/usr/lib64/libfftw3f\.so)' -- '$1 -Wl,--whole-archive,--as-needed,--allow-multiple-definition,/usr/lib64/libfftw3f.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive' $(fd -uu --glob *.ninja)
 sd '(LINK_ARGS.+)(\s/usr/lib64/libfftw3\.so)' -- '$1 -Wl,--whole-archive,--as-needed,--allow-multiple-definition,/usr/lib64/libfftw3.a,-lpthread,-ldl,-lm,-lmvec,--no-whole-archive' $(fd -uu --glob *.ninja)
