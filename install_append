@@ -1,1 +1,1 @@
-glib-compile-schemas %{buildroot}/usr/share/glib-2.0/schemas/
+#! glib-compile-schemas %{buildroot}/usr/share/glib-2.0/schemas/
